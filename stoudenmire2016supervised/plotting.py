@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import matplotlib_inline.backend_inline
 
-import numpy as np
+import jax.numpy as jnp
+
 
 SMALL_SIZE = 14
 MEDIUM_SIZE = 16
@@ -58,8 +59,8 @@ def plot(X, Y=None, xlabel=None, ylabel=None, legend=None, xlim=None,
     """
     Plot data points.
     """
-    X = np.asarray(X)
-    Y = np.asarray(Y)
+    X = jnp.asarray(X)
+    Y = jnp.asarray(Y)
 
     if legend is None:
         legend = []
@@ -90,7 +91,7 @@ def plot(X, Y=None, xlabel=None, ylabel=None, legend=None, xlim=None,
     axes.set_title(title)
 
 
-def show_img(img: np.ndarray, axes=None, title=None, figsize=(1.5,1.5)) -> None:
+def show_img(img: jnp.ndarray, axes=None, title=None, figsize=(1.5,1.5)) -> None:
     """
     Shows a single image.
     """
@@ -107,7 +108,7 @@ def show_img_grid(imgs, titles) -> None:
     """
     Shows a grid of images.
     """
-    n = int(np.ceil(len(imgs)**0.5))
+    n = int(jnp.ceil(len(imgs)**0.5))
     _, axes = plt.subplots(n,n)
     for i, (img, title) in enumerate(zip(imgs, titles)):
         show_img(img, axes[i // n][i % n], title)
